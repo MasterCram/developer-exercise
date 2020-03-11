@@ -1,6 +1,7 @@
 package net.gameslabs.implem;
 
 import net.gameslabs.api.Player;
+import net.gameslabs.model.Inventory;
 
 import java.util.Objects;
 
@@ -8,10 +9,12 @@ public class PlayerImplem implements Player {
 
     private String id;
     private String name;
+    private Inventory inventory;
 
     private PlayerImplem(String id, String name) {
         this.id = id;
         this.name = name;
+        this.inventory = new Inventory();
     }
 
     @Override
@@ -46,5 +49,9 @@ public class PlayerImplem implements Player {
     private static int players;
     public static Player newPlayer(String name) {
         return new PlayerImplem("player-" + (++players), name);
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 }
